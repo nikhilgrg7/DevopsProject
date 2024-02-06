@@ -4,15 +4,15 @@ node {
   }
 
   stage("Compilation") {
-    bat "./mvnw clean install -DskipTests"
+    bat ".\\mvnw clean install -DskipTests"
   }
 
   stage("Tests and Deployment") {
     stage("Runing unit tests") {
-      bat "./mvnw test -Punit"
+      bat ".\\mvnw test -Punit"
     }
     stage("Deployment") {
-      bat 'nohup ./mvnw spring-boot:run -Dserver.port=8001 &'
+      bat 'start .\\mvnw spring-boot:run -Dserver.port=8001'
     }
   }
 }
